@@ -1,6 +1,7 @@
 package mc.apps.spring.beans;
 
 import mc.apps.spring.SpringSamplesApplication;
+import mc.apps.spring.jpa.User;
 import mc.apps.spring.jpa.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,9 @@ public class MyRunner implements CommandLineRunner {
         Arrays.asList(beans).forEach(bean ->log.info(bean));
 
         log.info("*******************************************");
+        log.info("Liste 'users' : ");
+        repository.save(new User("Homer","Simpson"));
+        repository.save(new User("Marge","Simpson"));
         repository.findAll().forEach((user) -> {
             log.info("{}", user);
         });
